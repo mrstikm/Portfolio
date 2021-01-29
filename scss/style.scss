@@ -105,8 +105,8 @@ img {
         height: 64px;
         margin: 8px;
         border-radius: 50%;
-        border: 6px solid #fff;
-        border-color: #fff transparent #fff transparent;
+        border: 6px solid $color-links;
+        border-color: $color-links transparent $color-links transparent;
         animation: rotate 1.2s linear infinite;
     }
     @keyframes rotate {
@@ -519,4 +519,13 @@ footer {
     .gallery {
         display: none;
     }
+}
+
+// reklama
+a[href*="000web"] {
+    display: none;
+    visibility: hidden;
+    z-index: -999999;
+    position: absolute;
+    bottom: -1000px;
 }
