@@ -1,0 +1,522 @@
+@import 'mixins';
+
+html {
+    @include box-sizing( border-box );
+}
+
+*, *:before, *:after { box-sizing: inherit; }
+
+// VARIABLES
+$color-background-nav: #333638;
+$color-links: #bada55;
+$color-font: /* #e4e4de; */ #FFF;
+
+$font-headline: 'Arimo', 'Arial', sans-serif;
+$font-sans: 'Montserrat', 'Verdana', sans-serif;
+
+// BASICS
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 100%;
+    font-family: $font-sans;
+    font-weight: normal;
+    color: $color-font;  
+    background-color: lighten($color-background-nav, 10%);
+    &:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        opacity: 0.4;
+        background-color: rgb(32, 32, 32);
+        background-image: 
+            linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1)), 
+            linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), 
+            linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), 
+            linear-gradient(to bottom, rgb(8, 8, 8), rgb(32, 32, 32));
+        background-size: 100% 100%, 10px 10px, 10px 10px, 10px 5px;
+        background-position: 0px 0px, 0px 0px, 5px 5px, 0px 0px;
+    } 
+}
+
+h1, h2, h3, p, ul {
+    margin: 0;
+}
+
+h1, h2, h3 {
+    font-family: $font-headline;
+}
+
+.container {
+    @include container(800px);
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+// LIGHTBOX
+.overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 99;
+
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        max-height: 80vh;
+        width: auto;
+        max-width: 80vw;
+        border: 2px solid $color-links;
+        margin-top: em(16);
+    }
+
+    #loading {
+        display: block;
+        width: 80px;
+        height: 80px;
+    }
+    #loading:after {
+        content: " ";
+        display: block;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 6px solid #fff;
+        border-color: #fff transparent #fff transparent;
+        animation: rotate 1.2s linear infinite;
+    }
+    @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+    }
+
+    figcaption {
+        max-width: 90vw;
+        margin: auto;
+        padding: em(12);
+        text-align: center;
+        font-weight: 600;
+        background-color: $color-background-nav;
+        color: $color-links;
+        border: 2px solid $color-links;
+    }
+}
+
+.first-load {
+    background-color: #000;
+}
+
+#cross {
+    position: fixed;
+    top: em(20);
+    right: em(20);
+    z-index: 100;
+
+    display: block;
+    width: em(32);
+    height: em(32);
+    line-height: em(30);
+    font-weight: 600;
+    color: $color-links;
+    background-color: $color-background-nav;
+    border: 2px solid $color-links;
+    
+    cursor: pointer;
+
+    &:hover, &:focus {
+        background-color: darken($color-background-nav, 5%);
+    }
+}
+
+#backtop {
+    display: block;
+    position: fixed;
+    bottom: em(40);
+    right: em(16);
+    width: em(32);
+    height: em(32);
+    z-index: 98;
+    transform: rotate(-90deg);
+
+    font-weight: 600;
+    color: $color-links;
+    background-color: $color-links;
+    color: $color-background-nav;
+    opacity: 0.7;
+
+    text-decoration: none;
+    text-align: center;
+    line-height: em(32);
+
+    &:hover, &:focus {
+        background-color: darken($color-links, 20%);
+        animation-name: bounce;
+        animation-duration: 1s;
+        animation-iteration-count: 2;
+    }
+}
+
+// NAVIGATION
+.nav-background {
+    background-color: $color-background-nav;
+    padding: em(10) em(20);
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;      
+    }
+
+    ul {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    li {
+        display: inline-block;
+    }   
+
+}
+
+.social {
+    font-size: em(20);
+
+    li {
+        text-align: center;
+        line-height: em(34, 20);
+        margin-right: em(8, 20);
+    } 
+
+    a, li {
+        display: inline-block;
+        width: em(32, 20);
+        height: em(32, 20);
+    }
+
+    a {
+        color: $color-background-nav;
+        background-color: $color-links;
+
+        &:hover, &:focus {
+            background-color: darken($color-links, 20%);
+        }
+    }
+}
+
+#nav-toggle {
+    color: $color-links;
+    text-decoration: none;
+    padding: em(4,32) em(7,32);
+    border-radius: em(4,32);
+    font-size: em(26);
+    &:hover, &:focus {
+        background-color: $color-links;
+        color: $color-background-nav;
+    }
+}
+
+#slide-down {
+
+    width: 70%;
+    margin: 0 auto;
+
+    li {
+        text-align: center;
+        display: block;
+        line-height: 1.6em;
+        font-size: em(24);
+        border-bottom: 1px solid $color-links;
+
+        &:last-child {
+            border: none;
+        }
+    }
+    a {
+        color: $color-links;
+        text-decoration: none;
+
+        &:hover, &:focus {
+            color: darken($color-links , 20%);
+        }
+    }
+}
+
+#navigation {
+
+    display: none;
+
+}
+
+// HEADER
+.logo-background {
+    background-color: $color-links;
+    text-align: center;
+    padding: em(16) 0 em(18);
+    color: $color-background-nav;
+
+    strong {
+        font-weight: normal;
+        font-size: 1.2em;
+        border-bottom: 1px solid $color-background-nav;
+    }
+
+    span {
+        display: block;
+        margin-top: em(3, 22.4);
+        font: {
+            size: 0.7em;
+            weight: normal;
+            
+        }
+    }
+
+}
+
+// MAIN
+main {
+    
+    .container {
+        background-color: lighten( $color-background-nav , 10%);
+        padding: em(20);
+        font-size: 1em;
+    }
+
+    article {
+        @include clearfix;
+    }
+
+    h2, h3 {
+        color: $color-font;
+    }
+
+    h2 {
+        margin-bottom: em(8, 24);
+    }
+
+    p {
+        text-align: justify;
+        line-height: 1.2em;
+        margin-bottom: em(12);
+
+        strong {
+            color: $color-links;
+            font-weight: normal;
+        }
+    }
+
+    ul {
+        margin-bottom: em(10);
+    }
+
+    a {
+        text-decoration: none;
+        color: $color-links;
+
+        &:hover, &:focus {
+            text-decoration: underline;
+        }
+    }
+
+}
+
+hr {
+    border-color: $color-links;
+    margin: em(10) em(20) em(20);
+}
+
+.profile-pic {
+    max-width: 25%;
+    min-width: em(100);
+    float:left;
+    filter: grayscale(0.4);
+    padding-right: em(20);
+    padding-bottom: em(5);
+}
+
+#posledni {
+    margin: 0;
+}
+
+// GALERIE
+.gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    text-align: center;
+
+    img {
+        max-width: 120px;
+        padding-bottom: em(8);
+        box-shadow: 0 0 10px 0 rgba(#000, 0.1);
+    }
+}
+
+.projects {
+    img {
+        max-width: 340px;
+    }
+}
+
+// FOOTER
+footer {
+    background-color: $color-links;
+    color: $color-background-nav;
+    text-align: center;
+    padding: em(10, 12.8) 0;
+    font-size: 0.8em;
+
+    a {
+        color: $color-background-nav;
+
+        &:hover, &:focus {
+            color: darken($color-background-nav, 30%);
+        }
+    }
+}
+
+// ANIMATIONS
+@keyframes bounce {
+    0%      { transform: translateY(0)      rotate(-90deg); }
+    50%     { transform: translateY(-20px)  rotate(-90deg); }
+    100%    { transform: translateY(0)      rotate(-90deg); }
+}
+
+// MEDIA
+@media ( min-width: 421px) {
+    .nav-background .container, #backtop, #cross {
+        font-size: 120%;
+    }
+
+}
+
+@media (min-width: 600px) {
+    .gallery {
+        flex-wrap: nowrap;
+    }
+}
+
+@media (min-width: 829px) {
+    .profile-pic {
+        padding-bottom: em(18);
+    }
+}
+
+@media (min-width: 800px) {
+    #nav-toggle, .hidden {
+        display: none;
+    }
+
+    #navigation {
+        display: block;
+
+        li {
+            padding: em(16) em(20);
+            margin-left: -1 * em(5);
+            border-right: 1px solid $color-links;
+            font-size: em(16, 19.2);
+
+            &:last-child {
+                border: none;
+                padding-right: 0;
+            }
+        }
+
+        a {
+            color: $color-links;
+            text-decoration: none;
+
+            &:hover, &:focus {
+                color: darken($color-links , 20%);
+            }
+        }
+
+    }
+    .nav-background {
+        padding: 0;
+        .container {
+            @include container(820px);
+            padding: em(16, 19.2) em(32, 19.2);
+        }
+    }
+    main {
+        .container {
+            @include container(820px);
+            padding: em(27) em(32) em(26);
+        }
+    }
+
+    hr {
+        margin: em(16) em(32) em(32);
+    }
+
+    .social, #backtop, #cross {
+        font-size: 150%;
+    }
+
+    .social {
+
+        li {
+            margin-right: em(12, 24);
+        }
+        a {
+            display: inline-block;
+        }
+    }
+}
+
+@media (min-width: 884px) {
+    .nav-background .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (min-width: 1030px) {
+    #backtop, #cross {
+        right: calc(50vw - 492px);
+    }
+}
+
+@media print {
+    nav, footer {
+        display: none;
+    }
+
+    body {
+        color: black;
+    }
+
+    .gallery {
+        display: none;
+    }
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Martin Mrštík">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Martin Mrštík, junior web developer, uchazeč o práci.">
+    <title>Martin Mrštík | Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Arimo:wght@600&family=Montserrat&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Arimo:wght@600&family=Montserrat&display=swap">
+
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="css/brands.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/jquery-3.5.1.js"></script>
+
+    <noscript>
+        <style>
+            @media (max-width: 800px) {
+                .hidden {
+                    display: block;
+                }
+            }
+
+            .overlay {
+                display: none;
+            }
+        </style>
+    </noscript>
+
+</head>
+
+<body>
+    <div class="overlay first-load">
+        <div id="loading"></div>
+    </div>
+    <header id="top">
+        <div class="nav-background">
+            <div class="container">
+                <nav class="social">
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/martin-mr%C5%A1t%C3%ADk-3a74041ba/" target="_blank"><i
+                                    class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://github.com/mrstikm" target="_blank"><i class="fab fa-github"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="menu">
+                    <a id="nav-toggle" href="#">&#9776;</a>
+
+                    <ul id="navigation">
+                        <li><a href="#omne">O mně</a></li>
+                        <li><a href="#zkusenosti">Zkušenosti</a></li>
+                        <li><a href="#praxe">Praxe a vzdělání</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <nav class="hidden">
+                <ul id="slide-down">
+                    <li><a href="#omne">O mně</a></li>
+                    <li><a href="#zkusenosti">Zkušenosti</a></li>
+                    <li><a href="#praxe">Praxe a vzdělání</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="logo-background">
+            <div class="container">
+                <h1><strong>Martin&nbsp;Mrštík</strong><span>Junior web developer</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <article id="omne">
+                <h2>O mně</h2>
+
+                <img src="img/profile_pic_180.png" alt="Profilová fotka" class="profile-pic" width="180" height="180">
+
+                <p>Jmenuji&nbsp;se <strong>Martin&nbsp;Mrštík</strong>, je mi 27&nbsp;let. Doposud jsem pracoval jako
+                    správce
+                    informačních technologií ve&nbsp;společnosti zabývající&nbsp;se kovovýrobou.
+                </p>
+                <p>Ve volném čase se&nbsp;věnuji programování, nyní bych rád z&nbsp;koníčku udělal zdroj obživy. Původně
+                    jsem se&nbsp;věnoval jazyku <strong>Python</strong>, nicméně touha po tom, aby moje práce „byla
+                    vidět“, mě&nbsp;přivedla k&nbsp;webovým technologiím.
+                </p>
+                <p>Nyní se&nbsp;intenzivně vzdělávám v&nbsp;<strong>HTML5</strong>, <strong>CSS3</strong>
+                    a&nbsp;moderním <strong>JavaScriptu</strong>.</p>
+            </article>
+            <hr>
+            <article id="zkusenosti">
+                <h2>Zkušenosti</h2>
+                <p>Většinu zkušeností, stejně tak seznamování s&nbsp;novými technologiemi, získávám z&nbsp;webových
+                    kurzů na <a href="https://learn2code.cz/" target="_blank">learn2code.cz</a>, kde jsem&nbsp;si
+                    zakoupil doživotní předplatné, a&nbsp;tudíž stálý přísun nových vědomostí.
+                </p>
+                <h3>HTML5, CSS3</h3>
+                <p>Stránky píšu s&nbsp;ohledem na <strong>mobile-first</strong>
+                    a&nbsp;<strong>responsivitu</strong>.
+                    K&nbsp;tvorbě responsivního layoutu využívám kombinaci <strong>CSS Grid</strong>,
+                    <strong>Flexbox</strong>, případně <strong>Bootstrap</strong>. K&nbsp;psaní CSS využívám
+                    převážně <strong>Sass</strong> preprocesor.
+                </p>
+                <h3>JavaScript</h3>
+                <p>Nyní se&nbsp;snažím rozvíjet hlavně v&nbsp;moderním JavaScriptu, ale samozřejmě jsem prošel
+                    i&nbsp;starší technologie, jako například <strong>jQuery</strong>, z&nbsp;novějších pak
+                    například
+                    <strong>React.js.</strong>
+                </p>
+                <div class="gallery">
+                    <figure class="gallery-item">
+                        <a href="img/webrebel.PNG" title="Kurz Webrebel 1 – HTML, CSS, Javacript, jQuery, AJAX"
+                            target="_blank"><img src="img/webrebel-tmb.png" alt="Webrebel" width="200" height="280"></a>
+                        <figcaption>
+                            <a href="img/pdf/webrebel-1-html-css-javascript.pdf" target="_blank" download>Stáhnout</a>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <a href="img/sass.PNG" title="Kurz CSS preprocesor Sass" target="_blank"><img
+                                src="img/sass-tmb.png" alt="Sass" width="200" height="280"></a>
+                        <figcaption>
+                            <a href="img/pdf/css-preprocesory-sass.pdf" target="_blank" download>Stáhnout</a>
+                        </figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <a href="img/react.PNG" title="Kurz Základy React.js" target="_blank"><img
+                                src="img/react-tmb.png" alt="React.js" width="200" height="280"></a>
+                        <figcaption>
+                            <a href="img/pdf/react.pdf" target="_blank" download>Stáhnout</a>
+                        </figcaption>
+                    </figure>
+                </div>
+            </article>
+            <hr>
+            <article id="praxe">
+                <h2>Praxe a vzdělání</h2>
+                <h3>Tůma Aerospace s.r.o.</h3>
+                <ul>
+                    <li>Správce informačních technologí</li>
+                    <li>2017–2020</li>
+                </ul>
+                <h3>Střední průmyslová škola elektrotechnická</h3>
+                <ul>
+                    <li>Obor: správce sítě</li>
+                    <li>2008–2012</li>
+                    <li>Zakončeno maturitní zkouškou</li>
+                </ul>
+
+                <h3>Projekty</h3>
+                <div class="gallery projects">
+                    <figure>
+                        <a href="https://mrsta.cf/uloha1/index.html" target="_blank"><img
+                                src="img/simple-responsive-layout.PNG" alt="Simple Responsive Layout"></a>
+                        <figcaption><a href="https://mrsta.cf/uloha1/index.html" target="_blank">Simple Responsive
+                                Layout</a>
+                        </figcaption>
+                    </figure>
+                </div>
+            </article>
+            <hr>
+            <article id="kontakt">
+                <h2>Kontakt</h2>
+                <p>Telefon: <a href="tel:00420604118932">+420 604 118 932</a></p>
+                <p id="posledni">Email: <a href="mailto:mrstik.martin@gmail.com">mrstik.martin@gmail.com</a></p>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Vytvořeno jako náhrada životopisu pro <a href="https://www.antstudio.cz/kariera/junior-koder"
+                    target="_blank" title="Frontend junior nabídka práce | ANTstudio">ANTstudio</a>.</p>
+        </div>
+    </footer>
+
+    <a href="#top" title="Nahoru" id="backtop">&#10148;</a>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
